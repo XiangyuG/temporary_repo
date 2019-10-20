@@ -26,35 +26,35 @@ int stateful_alu_1_0_Mode_global= ??(1);
 int stateful_alu_1_0_const_0_global= ??(2);
 int stateful_alu_1_1_Mode_global= ??(1);
 int stateful_alu_1_1_const_0_global= ??(2);
-int stateful_operand_mux_0_0_0_ctrl= ??(1);
-int stateful_operand_mux_0_1_0_ctrl= ??(1);
-int stateful_operand_mux_1_0_0_ctrl= ??(1);
-int stateful_operand_mux_1_1_0_ctrl= ??(1);
-int output_mux_phv_0_0_ctrl= ??(2);
-int output_mux_phv_0_1_ctrl= ??(2);
-int output_mux_phv_1_0_ctrl= ??(2);
-int output_mux_phv_1_1_ctrl= ??(2);
-int salu_config_0_0= ??(1);
-int salu_config_0_1= ??(1);
-int salu_config_1_0= ??(1);
-int salu_config_1_1= ??(1);
+int stateful_operand_imux_0_0_0_ctrl= ??(1);
+int stateful_operand_imux_0_1_0_ctrl= ??(1);
+int stateful_operand_imux_1_0_0_ctrl= ??(1);
+int stateful_operand_imux_1_1_0_ctrl= ??(1);
+int omux_phv_0_0_ctrl= ??(2);
+int omux_phv_0_1_ctrl= ??(2);
+int omux_phv_1_0_ctrl= ??(2);
+int omux_phv_1_1_ctrl= ??(2);
+int salu_active_0_0= ??(1);
+int salu_active_0_1= ??(1);
+int salu_active_1_0= ??(1);
+int salu_active_1_1= ??(1);
 // Definitions of muxes and ALUs of the switch pipeline
-int stateful_operand_mux_0_0_0(int input0,int input1, int stateful_operand_mux_0_0_0_ctrl_local) {
-    if (stateful_operand_mux_0_0_0_ctrl_local == 0) { return input0;}
+int stateful_operand_imux_0_0_0(int input0,int input1, int stateful_operand_imux_0_0_0_ctrl_local) {
+    if (stateful_operand_imux_0_0_0_ctrl_local == 0) { return input0;}
     else { return input1; }
 }
-int stateful_operand_mux_1_0_0(int input0,int input1, int stateful_operand_mux_0_1_0_ctrl_local) {...}
-int stateful_operand_mux_1_0_0(int input0,int input1, int stateful_operand_mux_1_0_0_ctrl_local) {...}
-int stateful_operand_mux_1_0_0(int input0,int input1, int stateful_operand_mux_1_1_0_ctrl_local) {...}
+int stateful_operand_imux_1_0_0(int input0,int input1, int stateful_operand_imux_0_1_0_ctrl_local) {...}
+int stateful_operand_imux_1_0_0(int input0,int input1, int stateful_operand_imux_1_0_0_ctrl_local) {...}
+int stateful_operand_imux_1_0_0(int input0,int input1, int stateful_operand_imux_1_1_0_ctrl_local) {...}
 // Output mux for each PHV container
-int output_mux_phv_0_0(int input0,int input1,int input2,int output_mux_phv_0_0_ctrl_local) {
-    if (output_mux_phv_0_0_ctrl_local == 0) {return input0;}
-    else if (output_mux_phv_0_0_ctrl_local == 1) {return input1;}
+int omux_phv_0_0(int input0,int input1,int input2,int omux_phv_0_0_ctrl_local) {
+    if (omux_phv_0_0_ctrl_local == 0) {return input0;}
+    else if (omux_phv_0_0_ctrl_local == 1) {return input1;}
     else {return input2;}
 }
-int output_mux_phv_0_1(int input0,int input1,int input2,int output_mux_phv_0_1_ctrl_local) {...}
-int output_mux_phv_1_0(int input0,int input1,int input2,int output_mux_phv_1_0_ctrl_local) {...}
-int output_mux_phv_1_1(int input0,int input1,int input2,int output_mux_phv_1_1_ctrl_local) {...}
+int omux_phv_0_1(int input0,int input1,int input2,int omux_phv_0_1_ctrl_local) {...}
+int omux_phv_1_0(int input0,int input1,int input2,int omux_phv_1_0_ctrl_local) {...}
+int omux_phv_1_1(int input0,int input1,int input2,int omux_phv_1_1_ctrl_local) {...}
 // Definition for ALUs
 int stateless_alu_0_0_mux1(int input0,int input1, int stateless_alu_0_0_imux1_ctrl_local) {
     if (stateless_alu_0_0_imux1_ctrl_local == 0) { return input0;}
@@ -72,9 +72,9 @@ int stateless_alu_0_0(int input0,int input1,int opcode,int immediate,int imux1_c
 int stateless_alu_0_1_mux1(int input0,int input1, int stateless_alu_0_1_imux1_ctrl_local) {...}
 int stateless_alu_0_1_mux2(int input0,int input1, int stateless_alu_0_1_imux2_ctrl_local) {...}
 int stateless_alu_0_1(int input0,int input1,int opcode,int immediate,int imux1_ctrl_hole_local,int imux2_ctrl_hole_local ){...}
-int stateful_alu_0_0_Mode(int output1,int output2,int mode) {
-    if (mode == 0) return output1;
-    else return output2;
+int stateful_alu_0_0_Mode(int input0,int input1,int mode) {
+    if (mode == 0) return input0;
+    else return input1;
 } 
 int stateful_alu_0_0(int ref state_0, int pkt_0, int mode,int Opt_0,int const_0) {
  int old_state_0 = state_0;
@@ -96,10 +96,10 @@ struct StateAndPacket {
 // Implementation
   |StateAndPacket| pipeline (|StateAndPacket| state_and_packet) {
   // Any additional constraints to speed up synthesis through parallel execution.
-  assert((salu_config_0_0 + salu_config_0_1 + 0) <= 2);
-  assert((salu_config_1_0 + salu_config_1_1 + 0) <= 2);
-  assert((salu_config_0_0 + salu_config_1_0 + 0) <= 1);
-  assert((salu_config_0_1 + salu_config_1_1 + 0) <= 1);
+  assert((salu_active_0_0 + salu_active_0_1 + 0) <= 2);
+  assert((salu_active_1_0 + salu_active_1_1 + 0) <= 2);
+  assert((salu_active_0_0 + salu_active_1_0 + 0) <= 1);
+  assert((salu_active_0_1 + salu_active_1_1 + 0) <= 1);
   // Container i will be allocated to packet field i from the spec.
     int input_0_0 = 0;
     int input_0_1 = 0;
@@ -117,22 +117,22 @@ struct StateAndPacket {
           stateless_alu_0_0_imux1_ctrl,stateless_alu_0_0_imux2_ctrl);
       int destination_0_1 = stateless_alu_0_1(...);
    // Stateful operands
-        int packet_operand_salu0_0_0 = stateful_operand_mux_0_0_0(input_0_0,input_0_1,stateful_operand_mux_0_0_0_ctrl);
-        int packet_operand_salu0_1_0 = stateful_operand_mux_0_1_0(...);
+        int packet_operand_salu0_0_0 = stateful_operand_imux_0_0_0(input_0_0,input_0_1,stateful_operand_imux_0_0_0_ctrl);
+        int packet_operand_salu0_1_0 = stateful_operand_imux_0_1_0(...);
     // Read stateful ALU slots from allocated state vars.
-      if (salu_config_0_0 == 1) {
+      if (salu_active_0_0 == 1) {
         state_operand_salu_0_0 = state_and_packet.state_0;}
-      if (salu_config_0_1 == 1) {
+      if (salu_active_0_1 == 1) {
         state_operand_salu_0_1 = state_and_packet.state_1;}
     // Stateful ALUs
       int state_alu_output_0_0 = stateful_alu_0_0(state_operand_salu_0_0,packet_operand_salu0_0_0,
       stateful_alu_0_0_Mode_global,stateful_alu_0_0_const_0_global);
       int state_alu_output_0_1 = stateful_alu_0_1(...);
     // Outputs
-      int output_0_0 = output_mux_phv_0_0(state_alu_output_0_0,state_alu_output_0_1,destination_0_0,output_mux_phv_0_0_ctrl);
-      int output_0_1 = output_mux_phv_0_1(...);
+      int output_0_0 = omux_phv_0_0(state_alu_output_0_0,state_alu_output_0_1,destination_0_0,omux_phv_0_0_ctrl);
+      int output_0_1 = omux_phv_0_1(...);
       // Write state_0
-      if (salu_config_0_0 == 1) { state_and_packet.state_0 = state_operand_salu_0_0;}
+      if (salu_active_0_0 == 1) { state_and_packet.state_0 = state_operand_salu_0_0;}
       // Write state_1
       ...
     /*********** Stage 1 *********/

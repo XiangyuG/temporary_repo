@@ -74,7 +74,7 @@ int stateless_alu_0_1_mux2(int input0,int input1, int stateless_alu_0_1_imux2_ct
 int stateless_alu_0_1(int input0,int input1,int opcode,int immediate,int imux1_ctrl_hole_local,int imux2_ctrl_hole_local ){...}
 int stateful_alu_0_0_Mode(int input0,int input1,int mode) {
     if (mode == 0) return input0;
-    else return input1;
+    else {return input1};
 } 
 int stateful_alu_0_0(int ref state_0, int pkt_0, int mode,int Opt_0,int const_0) {
  int old_state_0 = state_0;

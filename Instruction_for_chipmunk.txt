@@ -1,0 +1,24 @@
+Install necessary repos
+1. install chipmunk_experiments-tofino and follow the README file inside
+   git clone https://github.com/chipmunk-project/chipmunk_experiments-tofino
+2. install domino-compiler and follow the README file inside
+   git clone https://github.com/chipmunk-project/domino-compiler
+3. install domino-examples and follow the README file inside
+   git clone https://github.com/chipmunk-project/domino-examples
+4. install druzhba and follow the README file inside
+   git clone https://github.com/chipmunk-project/druzhba
+5. install chipmunk-tofino and follow the README file inside
+   git clone https://github.com/chipmunk-project/chipmunk-tofino
+
+Script to run the test
+# Run domino
+
+# Run Chipmunk with domino's ALU
+1. go to chipmunk_experiments-tofino folder
+```
+cd ~/chipmunk_experiments-tofino
+
+```
+
+# Run Chipmunk with Tofino's ALU
+

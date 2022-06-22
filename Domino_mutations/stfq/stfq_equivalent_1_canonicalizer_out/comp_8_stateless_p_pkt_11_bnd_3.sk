@@ -1,0 +1,82 @@
+int alu(int opcode, int pkt_0, int pkt_1, int pkt_2, int immediate_operand) {
+    if (opcode == 0) {
+        return immediate_operand;
+    } else if (opcode == 1) {
+        return pkt_0 + pkt_1;
+    } else if (opcode == 2) {
+        return pkt_0 + immediate_operand;
+    } else if (opcode == 3) {
+        return pkt_0 - pkt_1;
+    } else if (opcode == 4) {
+        return pkt_0 - immediate_operand;
+    } else if (opcode == 5) {
+        return immediate_operand - pkt_0;
+    } else if (opcode == 6) {
+        return pkt_0!=pkt_1;
+    } else if (opcode == 7) {
+        return (pkt_0 != immediate_operand);
+    } else if (opcode == 8) {
+        return (pkt_0 == pkt_1);
+    } else if (opcode == 9) {
+        return (pkt_0 == immediate_operand);
+    } else if (opcode == 10) {
+        return (pkt_0 >= pkt_1);
+    } else if (opcode == 11) {
+        return (pkt_0 >= immediate_operand);
+    } else if (opcode == 12) {
+        return (pkt_0 < pkt_1);
+    } else if (opcode == 13) {
+        return (pkt_0 < immediate_operand);
+    } else if (opcode == 14) {
+        return pkt_0 != 0 ? pkt_1 : pkt_2;
+    } else if (opcode == 15) {
+        return pkt_0 != 0 ? pkt_1 : immediate_operand;
+    } else if (opcode == 16) {
+        return ((pkt_0 != 0) || (pkt_1 != 0));
+    } else if (opcode == 17) {
+        return ((pkt_0 != 0) || (immediate_operand != 0));
+    } else if (opcode == 18) {
+        return ((pkt_0 != 0) && (pkt_1 != 0));
+    } else if (opcode == 19) {
+        return ((pkt_0 != 0) && (immediate_operand != 0));
+    } else {
+        return (pkt_0 == 0);
+    }
+}
+
+generator int expr(fun vars, int bnd) {
+  assert bnd >= 1;
+    int t = ??(1);
+
+    if (t == 0) {
+        return alu(??, vars(), vars(), vars(), ??);
+    }
+    if (t == 1) {
+        return alu(??, expr(vars, bnd-1), expr(vars, bnd-1), expr(vars, bnd - 1),  ??);
+    }
+}
+
+int comp_8(int p_pkt_0, int p_state_000, int p_pkt_2, int p_pkt_1){
+	bit p__br_tmp10;
+	int p_pkt_11;
+	int p_pkt_10;
+	bit p__br_tmp00;
+	bit p__br_tmp20;
+	int p_state_001;
+	bit p__br_tmp30;
+	p__br_tmp10 = 1==1&&!((p_state_000>1)&&(p_pkt_0<p_state_000)&&1==1)&&1==1;
+	p__br_tmp00 = 1==1&&!(!(!((p_state_000>1)&&(p_pkt_0<p_state_000)&&1==1)))&&1==1;
+	p_pkt_10 = (1&&(p__br_tmp00)&&(p__br_tmp10)) ? (p_pkt_0) : (p_pkt_1);
+	p_state_001 = (1&&(p__br_tmp00)&&(p__br_tmp10)) ? (p_pkt_0+p_pkt_2) : (p_state_000);
+	p__br_tmp20 = 1==1&&!(!((p_state_001>1)&&(p_pkt_0<p_state_001)&&1==1))&&1==1;
+	p__br_tmp30 = 1==1&&(p_state_001>1)&&(p_pkt_0<p_state_001)&&1==1&&1==1;
+	p_pkt_11 = (1&&!(p__br_tmp00)&&(p__br_tmp20)&&(p__br_tmp30)) ? (p_state_001) : (p_pkt_10);
+	return p_pkt_11;
+}
+
+harness void sketch(int p_pkt_0, int p_state_000, int p_pkt_2, int p_pkt_1) {
+	generator int vars(){
+		return {| 1 | p_pkt_0 | p_state_000 | p_pkt_2 | p_pkt_1 |};
+	}
+	assert expr(vars, 3) == comp_8(p_pkt_0, p_state_000, p_pkt_2, p_pkt_1);
+}

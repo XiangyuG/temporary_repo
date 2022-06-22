@@ -1,0 +1,70 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/dns_ttl_change/dns_ttl_change_equivalent_2_out/try_merge_query_0_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*try_mer..ateful.sk:153*/
+
+void query_0 (int ttl_change_0, bit p__br_tmp5, int p_seen00, ref int[2] _out0)/*try_mer..ateful.sk:153*/
+{
+  _out0 = ((int[2])0);
+  int p_ttl_change01 = (p__br_tmp5 ? 1 + ttl_change_0 : ttl_change_0);
+  int p_ttl_change02 = (p_seen00 == 0 ? 0 : p_ttl_change01);
+  _out0[0] = p_ttl_change02;
+  _out0[1] = 0;
+  return;
+}
+/*try_mer..ateful.sk:132*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*try_mer..ateful.sk:132*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if(((state_0_0 + pkt_1) - pkt_0) < 0)/*try_mer..ateful.sk:134*/
+  {
+    if(((state_0_0 + pkt_0) - 0) > 3)/*try_mer..ateful.sk:135*/
+    {
+      state_0 = state_0_0 + 1;
+    }
+    else
+    {
+      state_0 = pkt_0 - 1;
+    }
+  }
+  else
+  {
+    if((pkt_1 - 0) < 1)/*try_mer..ateful.sk:141*/
+    {
+      state_0 = 0;
+    }
+    else
+    {
+      state_0 = state_0_0 + pkt_0;
+    }
+  }
+  _out0[0] = state_0;
+  _out0[1] = 0;
+  return;
+}
+/*try_mer..ateful.sk:169*/
+
+void sketch (int ttl_change, bit p__br_tmp5, int p_seen00)/*try_mer..ateful.sk:169*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(ttl_change, p__br_tmp5, p_seen00, impl_s1);
+  int[2] spec_s3 = {0,0};
+  query_0(ttl_change, p__br_tmp5, p_seen00, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at try_mer..ateful.sk:172 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at try_mer..ateful.sk:173 (1)
+}
+/*try_mer..ateful.sk:169*/
+
+void sketch__Wrapper (int ttl_change, bit p__br_tmp5, int p_seen00)  implements sketch__WrapperNospec/*try_mer..ateful.sk:169*/
+{
+  sketch(ttl_change, p__br_tmp5, p_seen00);
+}
+/*try_mer..ateful.sk:169*/
+
+void sketch__WrapperNospec (int ttl_change, bit p__br_tmp5, int p_seen00)/*try_mer..ateful.sk:169*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 513

@@ -1,0 +1,48 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/rcp/rcp_equivalent_2_canonicalizer_out/comp_2_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_2_..ateful.sk:142*/
+
+void comp_2 (int state_2_0, bit p__br_tmp1, ref int[2] _out0)/*comp_2_..ateful.sk:142*/
+{
+  _out0 = ((int[2])0);
+  int p_state_201 = (p__br_tmp1 ? 1 + state_2_0 : state_2_0);
+  _out0[0] = p_state_201;
+  _out0[1] = 0;
+  return;
+}
+/*comp_2_..ateful.sk:131*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*comp_2_..ateful.sk:131*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  state_0 = state_0_0 + pkt_0;
+  _out0[0] = state_0;
+  _out0[1] = 0;
+  return;
+}
+/*comp_2_..ateful.sk:154*/
+
+void sketch (int state_2, bit p__br_tmp1)/*comp_2_..ateful.sk:154*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(state_2, p__br_tmp1, 0, impl_s1);
+  int[2] spec_s3 = {0,0};
+  comp_2(state_2, p__br_tmp1, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at comp_2_..ateful.sk:157 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at comp_2_..ateful.sk:158 (1)
+}
+/*comp_2_..ateful.sk:154*/
+
+void sketch__Wrapper (int state_2, bit p__br_tmp1)  implements sketch__WrapperNospec/*comp_2_..ateful.sk:154*/
+{
+  sketch(state_2, p__br_tmp1);
+}
+/*comp_2_..ateful.sk:154*/
+
+void sketch__WrapperNospec (int state_2, bit p__br_tmp1)/*comp_2_..ateful.sk:154*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 400

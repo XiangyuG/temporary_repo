@@ -1,0 +1,34 @@
+int pkt_arrival;
+int pkt_dport;
+int pkt_id;
+int pkt_last_time00;
+int pkt_last_time01;
+int pkt_new_hop;
+int pkt_next_hop0;
+int pkt_saved_hop00;
+int pkt_saved_hop01;
+int pkt_sport;
+# state variables start
+int last_time;
+int saved_hop;
+# state variables end
+bit pkt__br_tmp1;
+# packet vars start
+pkt_arrival
+pkt_dport
+pkt_id
+pkt_last_time01
+pkt_new_hop
+pkt_next_hop0
+pkt_saved_hop01
+pkt_sport
+# declarations end
+pkt_saved_hop00 = saved_hop;
+pkt_last_time00 = last_time;
+pkt__br_tmp1 = pkt_arrival-pkt_last_time00>5;
+pkt_saved_hop01 = pkt__br_tmp1 ? (pkt_new_hop) : (pkt_saved_hop00);
+pkt_last_time01 = pkt_arrival;
+pkt_next_hop0 = pkt_saved_hop01;
+saved_hop = pkt_saved_hop01;
+last_time = pkt_last_time01;
+

@@ -1,0 +1,70 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/stfq/stfq_equivalent_1_canonicalizer_out/comp_0_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_0_..ateful.sk:153*/
+
+void comp_0 (int state_0_0, int p_pkt_0, int p_pkt_2, ref int[2] _out0)/*comp_0_..ateful.sk:153*/
+{
+  _out0 = ((int[2])0);
+  int p_state_001 = (!((p_pkt_0 < state_0_0) && (state_0_0 > 1)) ? p_pkt_0 + p_pkt_2 : state_0_0);
+  int p_state_002 = ((((p_pkt_0 < state_0_0) && (p_pkt_0 < p_state_001)) && (state_0_0 > 1)) && (p_state_001 > 1) ? p_pkt_2 + p_state_001 : p_state_001);
+  _out0[0] = p_state_002;
+  _out0[1] = state_0_0;
+  return;
+}
+/*comp_0_..ateful.sk:132*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*comp_0_..ateful.sk:132*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if((state_0_0 - pkt_0) > 0)/*comp_0_..ateful.sk:134*/
+  {
+    if((state_0_0 - 0) == 1)/*comp_0_..ateful.sk:135*/
+    {
+      state_0 = pkt_0 + pkt_1;
+    }
+    else
+    {
+      state_0 = state_0_0 + (pkt_1 - 0);
+    }
+  }
+  else
+  {
+    if((state_0_0 - 0) < 1)/*comp_0_..ateful.sk:141*/
+    {
+      state_0 = state_0_0 + (pkt_0 + pkt_1);
+    }
+    else
+    {
+      state_0 = pkt_0 + pkt_1;
+    }
+  }
+  _out0[0] = state_0;
+  _out0[1] = state_0_0;
+  return;
+}
+/*comp_0_..ateful.sk:171*/
+
+void sketch (int state_0, int p_pkt_0, int p_pkt_2)/*comp_0_..ateful.sk:171*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(state_0, p_pkt_0, p_pkt_2, impl_s1);
+  int[2] spec_s3 = {0,0};
+  comp_0(state_0, p_pkt_0, p_pkt_2, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at comp_0_..ateful.sk:174 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at comp_0_..ateful.sk:175 (1)
+}
+/*comp_0_..ateful.sk:171*/
+
+void sketch__Wrapper (int state_0, int p_pkt_0, int p_pkt_2)  implements sketch__WrapperNospec/*comp_0_..ateful.sk:171*/
+{
+  sketch(state_0, p_pkt_0, p_pkt_2);
+}
+/*comp_0_..ateful.sk:171*/
+
+void sketch__WrapperNospec (int state_0, int p_pkt_0, int p_pkt_2)/*comp_0_..ateful.sk:171*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 906

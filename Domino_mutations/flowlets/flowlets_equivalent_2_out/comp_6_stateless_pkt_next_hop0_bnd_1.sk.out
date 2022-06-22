@@ -1,0 +1,200 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/flowlets/flowlets_equivalent_2_out/comp_6_stateless_pkt_next_hop0_bnd_1.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_6_.._bnd_1.sk:1*/
+
+void alu (int opcode, int pkt_0, int pkt_1, int pkt_2, int immediate_operand, ref int _out)/*comp_6_.._bnd_1.sk:1*/
+{
+  if(opcode == 0)/*comp_6_.._bnd_1.sk:2*/
+  {
+    _out = immediate_operand;
+    return;
+  }
+  else
+  {
+    if(opcode == 1)/*comp_6_.._bnd_1.sk:4*/
+    {
+      _out = pkt_0 + pkt_1;
+      return;
+    }
+    else
+    {
+      if(opcode == 2)/*comp_6_.._bnd_1.sk:6*/
+      {
+        _out = pkt_0 + immediate_operand;
+        return;
+      }
+      else
+      {
+        if(opcode == 3)/*comp_6_.._bnd_1.sk:8*/
+        {
+          _out = pkt_0 - pkt_1;
+          return;
+        }
+        else
+        {
+          if(opcode == 4)/*comp_6_.._bnd_1.sk:10*/
+          {
+            _out = pkt_0 - immediate_operand;
+            return;
+          }
+          else
+          {
+            if(opcode == 5)/*comp_6_.._bnd_1.sk:12*/
+            {
+              _out = immediate_operand - pkt_0;
+              return;
+            }
+            else
+            {
+              if(opcode == 6)/*comp_6_.._bnd_1.sk:14*/
+              {
+                _out = pkt_0 != pkt_1;
+                return;
+              }
+              else
+              {
+                if(opcode == 7)/*comp_6_.._bnd_1.sk:16*/
+                {
+                  _out = pkt_0 != immediate_operand;
+                  return;
+                }
+                else
+                {
+                  if(opcode == 8)/*comp_6_.._bnd_1.sk:18*/
+                  {
+                    _out = pkt_0 == pkt_1;
+                    return;
+                  }
+                  else
+                  {
+                    if(opcode == 9)/*comp_6_.._bnd_1.sk:20*/
+                    {
+                      _out = pkt_0 == immediate_operand;
+                      return;
+                    }
+                    else
+                    {
+                      if(opcode == 10)/*comp_6_.._bnd_1.sk:22*/
+                      {
+                        _out = pkt_0 >= pkt_1;
+                        return;
+                      }
+                      else
+                      {
+                        if(opcode == 11)/*comp_6_.._bnd_1.sk:24*/
+                        {
+                          _out = pkt_0 >= immediate_operand;
+                          return;
+                        }
+                        else
+                        {
+                          if(opcode == 12)/*comp_6_.._bnd_1.sk:26*/
+                          {
+                            _out = pkt_0 < pkt_1;
+                            return;
+                          }
+                          else
+                          {
+                            if(opcode == 13)/*comp_6_.._bnd_1.sk:28*/
+                            {
+                              _out = pkt_0 < immediate_operand;
+                              return;
+                            }
+                            else
+                            {
+                              if(opcode == 14)/*comp_6_.._bnd_1.sk:30*/
+                              {
+                                _out = (pkt_0 != 0 ? pkt_1 : pkt_2);
+                                return;
+                              }
+                              else
+                              {
+                                if(opcode == 15)/*comp_6_.._bnd_1.sk:32*/
+                                {
+                                  _out = (pkt_0 != 0 ? pkt_1 : immediate_operand);
+                                  return;
+                                }
+                                else
+                                {
+                                  if(opcode == 16)/*comp_6_.._bnd_1.sk:34*/
+                                  {
+                                    _out = (pkt_0 != 0) || (pkt_1 != 0);
+                                    return;
+                                  }
+                                  else
+                                  {
+                                    if(opcode == 17)/*comp_6_.._bnd_1.sk:36*/
+                                    {
+                                      _out = (pkt_0 != 0) || (immediate_operand != 0);
+                                      return;
+                                    }
+                                    else
+                                    {
+                                      if(opcode == 18)/*comp_6_.._bnd_1.sk:38*/
+                                      {
+                                        _out = (pkt_0 != 0) && (pkt_1 != 0);
+                                        return;
+                                      }
+                                      else
+                                      {
+                                        if(opcode == 19)/*comp_6_.._bnd_1.sk:40*/
+                                        {
+                                          _out = (pkt_0 != 0) && (immediate_operand != 0);
+                                          return;
+                                        }
+                                        else
+                                        {
+                                          _out = pkt_0 == 0;
+                                          return;
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*comp_6_.._bnd_1.sk:59*/
+
+void comp_6 (int pkt_next_hop, int pkt_saved_hop01, ref int _out)/*comp_6_.._bnd_1.sk:59*/
+{
+  _out = pkt_saved_hop01;
+  return;
+}
+/*comp_6_.._bnd_1.sk:67*/
+
+void sketch (int pkt_next_hop, int pkt_saved_hop01)/*comp_6_.._bnd_1.sk:67*/
+{
+  int _out_s12 = 0;
+  alu(15, pkt_saved_hop01, pkt_saved_hop01, pkt_next_hop, 0, _out_s12)//{};
+  int _out_s4 = 0;
+  comp_6(pkt_next_hop, pkt_saved_hop01, _out_s4);
+  assert (_out_s12 == _out_s4); //Assert at comp_6_.._bnd_1.sk:71 (0)
+}
+/*comp_6_.._bnd_1.sk:67*/
+
+void sketch__Wrapper (int pkt_next_hop, int pkt_saved_hop01)  implements sketch__WrapperNospec/*comp_6_.._bnd_1.sk:67*/
+{
+  sketch(pkt_next_hop, pkt_saved_hop01);
+}
+/*comp_6_.._bnd_1.sk:67*/
+
+void sketch__WrapperNospec (int pkt_next_hop, int pkt_saved_hop01)/*comp_6_.._bnd_1.sk:67*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 388

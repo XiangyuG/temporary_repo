@@ -1,0 +1,45 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/learn_filter/learn_filter_equivalent_10_canonicalizer_out/try_merge_query_103_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*try_mer..ateful.sk:141*/
+
+void query_103 (int state_0_0, ref int[2] _out0)/*try_mer..ateful.sk:141*/
+{
+  _out0 = ((int[2])0);
+  _out0[0] = 1;
+  _out0[1] = state_0_0;
+  return;
+}
+/*try_mer..ateful.sk:132*/
+
+void salu (int state_0_0, int pkt_0, ref int[2] _out0)/*try_mer..ateful.sk:132*/
+{
+  _out0 = ((int[2])0);
+  _out0[0] = 1;
+  _out0[1] = state_0_0;
+  return;
+}
+/*try_mer..ateful.sk:153*/
+
+void sketch (int state_0)/*try_mer..ateful.sk:153*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(state_0, 0, impl_s1);
+  int[2] spec_s3 = {0,0};
+  query_103(state_0, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at try_mer..ateful.sk:156 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at try_mer..ateful.sk:157 (1)
+}
+/*try_mer..ateful.sk:153*/
+
+void sketch__Wrapper (int state_0)  implements sketch__WrapperNospec/*try_mer..ateful.sk:153*/
+{
+  sketch(state_0);
+}
+/*try_mer..ateful.sk:153*/
+
+void sketch__WrapperNospec (int state_0)/*try_mer..ateful.sk:153*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 358

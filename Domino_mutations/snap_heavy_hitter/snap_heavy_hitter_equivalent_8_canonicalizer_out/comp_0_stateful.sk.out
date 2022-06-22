@@ -1,0 +1,81 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/snap_heavy_hitter/snap_heavy_hitter_equivalent_8_canonicalizer_out/comp_0_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_0_..ateful.sk:159*/
+
+void comp_0 (int state_0_0, int state_1_1, ref int[3] _out0)/*comp_0_..ateful.sk:159*/
+{
+  _out0 = ((int[3])0);
+  int p_state_001 = (state_1_1 == 0 ? 1 + state_0_0 : state_0_0);
+  int p_state_101 = ((p_state_001 == 1000) && (state_1_1 == 0) ? 1 : state_1_1);
+  _out0[0] = p_state_001;
+  _out0[1] = p_state_101;
+  _out0[2] = 0;
+  return;
+}
+/*comp_0_..ateful.sk:131*/
+
+void salu (int state_0_0, int state_1_1, int pkt_1, int pkt_2, ref int[3] _out0)/*comp_0_..ateful.sk:131*/
+{
+  _out0 = ((int[3])0);
+  int state_1 = state_1_1;
+  int state_0 = state_0_0;
+  if(((state_1_1 + pkt_1) - pkt_1) == 0)/*comp_0_..ateful.sk:134*/
+  {
+    if((pkt_1 - pkt_1) < 6)/*comp_0_..ateful.sk:135*/
+    {
+      state_0 = state_0_0 + (1 + pkt_2);
+      state_1 = 0;
+    }
+    else
+    {
+      state_0 = state_0_0 + (pkt_1 + 6);
+      state_1 = state_1_1 + -19;
+    }
+  }
+  else
+  {
+    if(((state_1_1 + pkt_1) - pkt_1) < 0)/*comp_0_..ateful.sk:142*/
+    {
+      if(((state_0_0 + pkt_1) - pkt_1) < 1)/*comp_0_..ateful.sk:143*/
+      {
+        state_0 = state_0_0 + 1;
+        state_1 = state_1_1 + (pkt_1 - 27);
+      }
+      else
+      {
+        state_0 = pkt_1;
+        state_1 = state_1_1 + 5;
+      }
+    }
+  }
+  _out0[0] = state_0;
+  _out0[1] = state_1;
+  _out0[2] = 0;
+  return;
+}
+/*comp_0_..ateful.sk:181*/
+
+void sketch (int state_0, int state_1)/*comp_0_..ateful.sk:181*/
+{
+  int[3] impl_s1 = {0,0,0};
+  salu(state_0, state_1, 0, 0, impl_s1);
+  int[3] spec_s3 = {0,0,0};
+  comp_0(state_0, state_1, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at comp_0_..ateful.sk:184 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at comp_0_..ateful.sk:185 (1)
+  assert ((impl_s1[2]) == (spec_s3[2])); //Assert at comp_0_..ateful.sk:186 (1)
+}
+/*comp_0_..ateful.sk:181*/
+
+void sketch__Wrapper (int state_0, int state_1)  implements sketch__WrapperNospec/*comp_0_..ateful.sk:181*/
+{
+  sketch(state_0, state_1);
+}
+/*comp_0_..ateful.sk:181*/
+
+void sketch__WrapperNospec (int state_0, int state_1)/*comp_0_..ateful.sk:181*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 512

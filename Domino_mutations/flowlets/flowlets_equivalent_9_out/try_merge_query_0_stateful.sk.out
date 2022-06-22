@@ -1,0 +1,51 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/flowlets/flowlets_equivalent_9_out/try_merge_query_0_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*try_mer..ateful.sk:142*/
+
+void query_0 (int saved_hop_0, bit pkt__br_tmp1, int pkt_new_hop, ref int[2] _out0)/*try_mer..ateful.sk:142*/
+{
+  _out0 = ((int[2])0);
+  int pkt_saved_hop01 = (pkt__br_tmp1 ? pkt_new_hop : saved_hop_0);
+  _out0[0] = pkt_saved_hop01;
+  _out0[1] = pkt_saved_hop01;
+  return;
+}
+/*try_mer..ateful.sk:131*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*try_mer..ateful.sk:131*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if(0 < pkt_0)/*try_mer..ateful.sk:133*/
+  {
+    state_0 = pkt_1;
+  }
+  _out0[0] = state_0;
+  _out0[1] = state_0;
+  return;
+}
+/*try_mer..ateful.sk:156*/
+
+void sketch (int saved_hop, bit pkt__br_tmp1, int pkt_new_hop)/*try_mer..ateful.sk:156*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(saved_hop, pkt__br_tmp1, pkt_new_hop, impl_s1);
+  int[2] spec_s3 = {0,0};
+  query_0(saved_hop, pkt__br_tmp1, pkt_new_hop, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at try_mer..ateful.sk:159 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at try_mer..ateful.sk:160 (1)
+}
+/*try_mer..ateful.sk:156*/
+
+void sketch__Wrapper (int saved_hop, bit pkt__br_tmp1, int pkt_new_hop)  implements sketch__WrapperNospec/*try_mer..ateful.sk:156*/
+{
+  sketch(saved_hop, pkt__br_tmp1, pkt_new_hop);
+}
+/*try_mer..ateful.sk:156*/
+
+void sketch__WrapperNospec (int saved_hop, bit pkt__br_tmp1, int pkt_new_hop)/*try_mer..ateful.sk:156*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 327

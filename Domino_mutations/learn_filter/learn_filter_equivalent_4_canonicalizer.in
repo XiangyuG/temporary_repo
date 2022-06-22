@@ -1,0 +1,46 @@
+int p_dport;
+int p_filter1_idx;
+int p_filter2_idx;
+int p_filter3_idx;
+int p_pkt_0;
+int p_pkt_00;
+int p_pkt_01;
+int p_sport;
+int p_state_000;
+int p_state_001;
+int p_state_100;
+int p_state_101;
+int p_state_200;
+int p_state_201;
+# state variables start
+int state_0;
+int state_1;
+int state_2;
+# state variables end
+bit p__br_tmp1;
+bit p__br_tmp2;
+# packet vars start
+p_dport
+p_filter1_idx
+p_filter2_idx
+p_filter3_idx
+p_pkt_01
+p_sport
+p_state_001
+p_state_101
+p_state_201
+# declarations end
+p_state_200 = state_2;
+p_state_100 = state_1;
+p_state_000 = state_0;
+p__br_tmp1 = (p_state_000!=0)&&(p_state_100!=0)&&(p_state_200!=0);
+p_pkt_00 = p__br_tmp1 ? (1) : (p_pkt_0);
+p__br_tmp2 = !((p_state_000!=0)&&(p_state_100!=0)&&(p_state_200!=0));
+p_pkt_01 = p__br_tmp2 ? (0) : (p_pkt_00);
+p_state_201 = 1;
+p_state_101 = 1;
+p_state_001 = 1;
+state_2 = p_state_201;
+state_1 = p_state_101;
+state_0 = p_state_001;
+

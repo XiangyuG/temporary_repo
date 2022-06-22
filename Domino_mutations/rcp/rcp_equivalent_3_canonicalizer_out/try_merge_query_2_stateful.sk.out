@@ -1,0 +1,51 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/rcp/rcp_equivalent_3_canonicalizer_out/try_merge_query_2_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*try_mer..ateful.sk:142*/
+
+void query_2 (int state_2_0, bit p__br_tmp00, ref int[2] _out0)/*try_mer..ateful.sk:142*/
+{
+  _out0 = ((int[2])0);
+  int p_state_201 = (p__br_tmp00 ? state_2_0 + 1 : state_2_0);
+  _out0[0] = p_state_201;
+  _out0[1] = 0;
+  return;
+}
+/*try_mer..ateful.sk:131*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*try_mer..ateful.sk:131*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if(0 == pkt_1)/*try_mer..ateful.sk:133*/
+  {
+    state_0 = state_0_0 + pkt_0;
+  }
+  _out0[0] = state_0;
+  _out0[1] = 0;
+  return;
+}
+/*try_mer..ateful.sk:156*/
+
+void sketch (int state_2, bit p__br_tmp00)/*try_mer..ateful.sk:156*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(state_2, p__br_tmp00, 0, impl_s1);
+  int[2] spec_s3 = {0,0};
+  query_2(state_2, p__br_tmp00, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at try_mer..ateful.sk:159 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at try_mer..ateful.sk:160 (1)
+}
+/*try_mer..ateful.sk:156*/
+
+void sketch__Wrapper (int state_2, bit p__br_tmp00)  implements sketch__WrapperNospec/*try_mer..ateful.sk:156*/
+{
+  sketch(state_2, p__br_tmp00);
+}
+/*try_mer..ateful.sk:156*/
+
+void sketch__WrapperNospec (int state_2, bit p__br_tmp00)/*try_mer..ateful.sk:156*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 415

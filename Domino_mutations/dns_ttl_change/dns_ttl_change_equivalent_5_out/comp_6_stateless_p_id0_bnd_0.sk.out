@@ -1,0 +1,31 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/dns_ttl_change/dns_ttl_change_equivalent_5_out/comp_6_stateless_p_id0_bnd_0.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_6_.._bnd_0.sk:59*/
+
+void comp_6 (int p_rdata, ref int _out)/*comp_6_.._bnd_0.sk:59*/
+{
+  _out = p_rdata;
+  return;
+}
+/*comp_6_.._bnd_0.sk:65*/
+
+void sketch (int p_rdata)/*comp_6_.._bnd_0.sk:65*/
+{
+  int _out_s3 = 0;
+  comp_6(p_rdata, _out_s3);
+  assert (p_rdata == _out_s3); //Assert at comp_6_.._bnd_0.sk:69 (0)
+}
+/*comp_6_.._bnd_0.sk:65*/
+
+void sketch__Wrapper (int p_rdata)  implements sketch__WrapperNospec/*comp_6_.._bnd_0.sk:65*/
+{
+  sketch(p_rdata);
+}
+/*comp_6_.._bnd_0.sk:65*/
+
+void sketch__WrapperNospec (int p_rdata)/*comp_6_.._bnd_0.sk:65*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 1376

@@ -1,0 +1,47 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/rcp/rcp_equivalent_3_canonicalizer_out/comp_0_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_0_..ateful.sk:142*/
+
+void comp_0 (int state_0_0, int p_pkt_0, ref int[2] _out0)/*comp_0_..ateful.sk:142*/
+{
+  _out0 = ((int[2])0);
+  _out0[0] = p_pkt_0 + state_0_0;
+  _out0[1] = 0;
+  return;
+}
+/*comp_0_..ateful.sk:131*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*comp_0_..ateful.sk:131*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  state_0 = state_0_0 + pkt_0;
+  _out0[0] = state_0;
+  _out0[1] = 0;
+  return;
+}
+/*comp_0_..ateful.sk:154*/
+
+void sketch (int state_0, int p_pkt_0)/*comp_0_..ateful.sk:154*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(state_0, p_pkt_0, 0, impl_s1);
+  int[2] spec_s3 = {0,0};
+  comp_0(state_0, p_pkt_0, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at comp_0_..ateful.sk:157 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at comp_0_..ateful.sk:158 (1)
+}
+/*comp_0_..ateful.sk:154*/
+
+void sketch__Wrapper (int state_0, int p_pkt_0)  implements sketch__WrapperNospec/*comp_0_..ateful.sk:154*/
+{
+  sketch(state_0, p_pkt_0);
+}
+/*comp_0_..ateful.sk:154*/
+
+void sketch__WrapperNospec (int state_0, int p_pkt_0)/*comp_0_..ateful.sk:154*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 369

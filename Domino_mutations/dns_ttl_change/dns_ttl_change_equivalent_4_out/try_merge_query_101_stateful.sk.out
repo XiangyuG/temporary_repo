@@ -1,0 +1,70 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/dns_ttl_change/dns_ttl_change_equivalent_4_out/try_merge_query_101_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*try_mer..ateful.sk:153*/
+
+void query_101 (int last_ttl_0, int p_seen00, int p_ttl, ref int[2] _out0)/*try_mer..ateful.sk:153*/
+{
+  _out0 = ((int[2])0);
+  int p_last_ttl01 = ((!(p_seen00 == 0)) && (last_ttl_0 != p_ttl) ? p_ttl : last_ttl_0);
+  int p_last_ttl02 = (p_seen00 == 0 ? p_ttl : p_last_ttl01);
+  _out0[0] = p_last_ttl02;
+  _out0[1] = last_ttl_0;
+  return;
+}
+/*try_mer..ateful.sk:132*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*try_mer..ateful.sk:132*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if((pkt_0 - 0) != 0)/*try_mer..ateful.sk:134*/
+  {
+    if((0 - pkt_1) > 0)/*try_mer..ateful.sk:135*/
+    {
+      state_0 = state_0_0 + (pkt_0 - 1);
+    }
+    else
+    {
+      state_0 = pkt_1 - 0;
+    }
+  }
+  else
+  {
+    if(((state_0_0 + pkt_1) - pkt_0) < 1)/*try_mer..ateful.sk:141*/
+    {
+      state_0 = pkt_1;
+    }
+    else
+    {
+      state_0 = pkt_1;
+    }
+  }
+  _out0[0] = state_0;
+  _out0[1] = state_0_0;
+  return;
+}
+/*try_mer..ateful.sk:171*/
+
+void sketch (int last_ttl, int p_seen00, int p_ttl)/*try_mer..ateful.sk:171*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(last_ttl, p_seen00, p_ttl, impl_s1);
+  int[2] spec_s3 = {0,0};
+  query_101(last_ttl, p_seen00, p_ttl, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at try_mer..ateful.sk:174 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at try_mer..ateful.sk:175 (1)
+}
+/*try_mer..ateful.sk:171*/
+
+void sketch__Wrapper (int last_ttl, int p_seen00, int p_ttl)  implements sketch__WrapperNospec/*try_mer..ateful.sk:171*/
+{
+  sketch(last_ttl, p_seen00, p_ttl);
+}
+/*try_mer..ateful.sk:171*/
+
+void sketch__WrapperNospec (int last_ttl, int p_seen00, int p_ttl)/*try_mer..ateful.sk:171*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 467

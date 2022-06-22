@@ -1,0 +1,51 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/marple_tcp_nmo/marple_tcp_nmo_equivalent_10_canonicalizer_out/comp_1_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_1_..ateful.sk:142*/
+
+void comp_1 (int state_1_0, bit p__br_tmp5, ref int[2] _out0)/*comp_1_..ateful.sk:142*/
+{
+  _out0 = ((int[2])0);
+  int p_state_101 = (p__br_tmp5 ? 1 + state_1_0 : state_1_0);
+  _out0[0] = p_state_101;
+  _out0[1] = 0;
+  return;
+}
+/*comp_1_..ateful.sk:131*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*comp_1_..ateful.sk:131*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if(0 < pkt_0)/*comp_1_..ateful.sk:133*/
+  {
+    state_0 = state_0_0 + 1;
+  }
+  _out0[0] = state_0;
+  _out0[1] = 0;
+  return;
+}
+/*comp_1_..ateful.sk:154*/
+
+void sketch (int state_1, bit p__br_tmp5)/*comp_1_..ateful.sk:154*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(state_1, p__br_tmp5, 0, impl_s1);
+  int[2] spec_s3 = {0,0};
+  comp_1(state_1, p__br_tmp5, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at comp_1_..ateful.sk:157 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at comp_1_..ateful.sk:158 (1)
+}
+/*comp_1_..ateful.sk:154*/
+
+void sketch__Wrapper (int state_1, bit p__br_tmp5)  implements sketch__WrapperNospec/*comp_1_..ateful.sk:154*/
+{
+  sketch(state_1, p__br_tmp5);
+}
+/*comp_1_..ateful.sk:154*/
+
+void sketch__WrapperNospec (int state_1, bit p__br_tmp5)/*comp_1_..ateful.sk:154*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 398

@@ -1,0 +1,50 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/flowlets/flowlets_equivalent_6_out/try_merge_query_2_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*try_mer..ateful.sk:142*/
+
+void query_2 (int last_time_0, int pkt_arrival, ref int[2] _out0)/*try_mer..ateful.sk:142*/
+{
+  _out0 = ((int[2])0);
+  _out0[0] = pkt_arrival;
+  _out0[1] = last_time_0;
+  return;
+}
+/*try_mer..ateful.sk:131*/
+
+void salu (int state_0_0, int pkt_0, int pkt_1, ref int[2] _out0)/*try_mer..ateful.sk:131*/
+{
+  _out0 = ((int[2])0);
+  int state_0 = state_0_0;
+  if(0 == pkt_1)/*try_mer..ateful.sk:133*/
+  {
+    state_0 = pkt_0;
+  }
+  _out0[0] = state_0;
+  _out0[1] = state_0_0;
+  return;
+}
+/*try_mer..ateful.sk:154*/
+
+void sketch (int last_time, int pkt_arrival)/*try_mer..ateful.sk:154*/
+{
+  int[2] impl_s1 = {0,0};
+  salu(last_time, pkt_arrival, 0, impl_s1);
+  int[2] spec_s3 = {0,0};
+  query_2(last_time, pkt_arrival, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at try_mer..ateful.sk:157 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at try_mer..ateful.sk:158 (1)
+}
+/*try_mer..ateful.sk:154*/
+
+void sketch__Wrapper (int last_time, int pkt_arrival)  implements sketch__WrapperNospec/*try_mer..ateful.sk:154*/
+{
+  sketch(last_time, pkt_arrival);
+}
+/*try_mer..ateful.sk:154*/
+
+void sketch__WrapperNospec (int last_time, int pkt_arrival)/*try_mer..ateful.sk:154*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 1395

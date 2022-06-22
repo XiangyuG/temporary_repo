@@ -1,0 +1,31 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/conga/conga_equivalent_6_canonicalizer_out/comp_4_stateless_p_pkt_10_bnd_0.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_4_.._bnd_0.sk:59*/
+
+void comp_4 (int p_pkt_0, ref int _out)/*comp_4_.._bnd_0.sk:59*/
+{
+  _out = (p_pkt_0 < 0 ? 0 : p_pkt_0);
+  return;
+}
+/*comp_4_.._bnd_0.sk:67*/
+
+void sketch (int p_pkt_0)/*comp_4_.._bnd_0.sk:67*/
+{
+  int _out_s3 = 0;
+  comp_4(p_pkt_0, _out_s3);
+  assert (p_pkt_0 == _out_s3); //Assert at comp_4_.._bnd_0.sk:71 (0)
+}
+/*comp_4_.._bnd_0.sk:67*/
+
+void sketch__Wrapper (int p_pkt_0)  implements sketch__WrapperNospec/*comp_4_.._bnd_0.sk:67*/
+{
+  sketch(p_pkt_0);
+}
+/*comp_4_.._bnd_0.sk:67*/
+
+void sketch__WrapperNospec (int p_pkt_0)/*comp_4_.._bnd_0.sk:67*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 384

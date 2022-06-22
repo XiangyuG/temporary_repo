@@ -1,0 +1,83 @@
+SKETCH version 1.7.5
+Benchmark = /home/xiangyug/ruijief/benchmarks/Domino_mutations/conga/conga_equivalent_2_canonicalizer_out/comp_0_stateful.sk
+/* BEGIN PACKAGE ANONYMOUS*/
+/*comp_0_..ateful.sk:159*/
+
+void comp_0 (int state_0_0, int state_1_1, int p_pkt_3, int p_pkt_4, ref int[3] _out0)/*comp_0_..ateful.sk:159*/
+{
+  _out0 = ((int[3])0);
+  int p_state_001 = ((!(p_pkt_3 < state_0_0)) && (p_pkt_4 == state_1_1) ? p_pkt_3 : state_0_0);
+  bit p__br_tmp7 = (p_pkt_3 < state_0_0) && (p_pkt_3 < p_state_001);
+  int p_state_002 = (p__br_tmp7 ? p_pkt_3 : p_state_001);
+  int p_state_101 = (p__br_tmp7 ? p_pkt_4 : state_1_1);
+  _out0[0] = p_state_002;
+  _out0[1] = p_state_101;
+  _out0[2] = 0;
+  return;
+}
+/*comp_0_..ateful.sk:131*/
+
+void salu (int state_0_0, int state_1_1, int pkt_1, int pkt_2, ref int[3] _out0)/*comp_0_..ateful.sk:131*/
+{
+  _out0 = ((int[3])0);
+  int state_1 = state_1_1;
+  int state_0 = state_0_0;
+  if((state_1_1 - pkt_2) == 0)/*comp_0_..ateful.sk:134*/
+  {
+    if((state_1_1 - pkt_2) == 0)/*comp_0_..ateful.sk:135*/
+    {
+      state_0 = pkt_1 - 0;
+      state_1 = pkt_2;
+    }
+    else
+    {
+      state_0 = 0;
+      state_1 = state_1_1;
+    }
+  }
+  else
+  {
+    if((state_0_0 - pkt_1) > 0)/*comp_0_..ateful.sk:142*/
+    {
+      if((0 - pkt_2) < 6)/*comp_0_..ateful.sk:143*/
+      {
+        state_0 = pkt_1;
+        state_1 = pkt_2 - 0;
+      }
+      else
+      {
+        state_0 = state_0_0 + (pkt_2 - 1);
+        state_1 = pkt_2;
+      }
+    }
+  }
+  _out0[0] = state_0;
+  _out0[1] = state_1;
+  _out0[2] = 0;
+  return;
+}
+/*comp_0_..ateful.sk:183*/
+
+void sketch (int state_0, int state_1, int p_pkt_3, int p_pkt_4)/*comp_0_..ateful.sk:183*/
+{
+  int[3] impl_s1 = {0,0,0};
+  salu(state_0, state_1, p_pkt_3, p_pkt_4, impl_s1);
+  int[3] spec_s3 = {0,0,0};
+  comp_0(state_0, state_1, p_pkt_3, p_pkt_4, spec_s3);
+  assert ((impl_s1[0]) == (spec_s3[0])); //Assert at comp_0_..ateful.sk:186 (1)
+  assert ((impl_s1[1]) == (spec_s3[1])); //Assert at comp_0_..ateful.sk:187 (1)
+  assert ((impl_s1[2]) == (spec_s3[2])); //Assert at comp_0_..ateful.sk:188 (1)
+}
+/*comp_0_..ateful.sk:183*/
+
+void sketch__Wrapper (int state_0, int state_1, int p_pkt_3, int p_pkt_4)  implements sketch__WrapperNospec/*comp_0_..ateful.sk:183*/
+{
+  sketch(state_0, state_1, p_pkt_3, p_pkt_4);
+}
+/*comp_0_..ateful.sk:183*/
+
+void sketch__WrapperNospec (int state_0, int state_1, int p_pkt_3, int p_pkt_4)/*comp_0_..ateful.sk:183*/
+{ }
+/* END PACKAGE ANONYMOUS*/
+[SKETCH] DONE
+Total time = 2465
